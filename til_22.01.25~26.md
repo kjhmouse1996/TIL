@@ -84,7 +84,7 @@ ctrl+d: 루프에 갇힌 경우 빠져나오기
 
 - git add a.txt: a.txt파일을 staging area로 옮기기
 
-- git add .: 현재위치에서 변경사항 있는 모든 파일들을 staging area로 옮기기
+  - git add .: 현재위치에서 변경사항 있는 모든 파일들을 staging area로 옮기기
 
 - git commit -m "메세지": staging area에 있는 파일의 변경 사항을 하나의 버전으로 저장(local repository로 옮겨짐
 
@@ -125,18 +125,27 @@ ctrl+d: 루프에 갇힌 경우 빠져나오기
 
   commit 뒤에 있는 숫자와 알파벳들의 조합은 해쉬값으로 고유 번호같은 개념
 
-- git log --oneline: --oneline은 옵션 중 하나로 해쉬값과 함께 git log를 한줄로 간략하게 정리해줌![image-20220126140013811](test.assets/image-20220126140013811.png)
 
-- git log –oneline --graph
+  - git log --oneline: --oneline은 옵션 중 하나로 해쉬값과 함께 git log를 한줄로 간략하게 정리해줌![image-20220126140013811](test.assets/image-20220126140013811.png)
+  - git log –oneline --graph
 
 - git checkout 해쉬값: 해쉬값 전까지의 작업으로 돌아가줌                                     <img src="test.assets/캡4.PNG" alt="캡4" style="zoom:67%;" />
 
 - git checkout head~숫자: head에서부터 돌아가고 싶은 작업까지의 개수를 지정<img src="test.assets/캡처5.PNG" alt="캡처5" style="zoom: 80%;" />
 
 - git checkout master: 지운 것을 되돌려줌(복구)                        ![캡처6](test.assets/캡처6.PNG)
-- git remote add origin github주소: 브릿지 잇기로 본인이 만든 파일을 올리려는 github페이지에 연동시키는 것
-  - git remote -v: 브릿지가 제대로 이어졌는지 확인해줌                                                             ![캡처](test.assets/캡처-16431752751992.PNG)
+
+- git remote add origin github주소: 브릿지 잇기로 본인이 만든 파일을 올리려는 github페이지에 연결시키는 것
+  - git remote -v: 브릿지가 제대로 이어졌는지 확인해줌, 원격 저장소 조회                                                            ![캡처](test.assets/캡처-16431752751992.PNG)
+  - git remote remove origin: 깃허브주소를 잘못 기입했을 경우 연결 삭제
+
 - git push origin master: github페이지에 올리기                                                                                            ![9](test.assets/9-16431756660863.PNG)
+
+- touch .gitignore: .gitignore를 만들어서 깃허브에 올리기 싫은 특정 파일이나 폴더를 안에 넣을 수 있음, git add .를 했을 때 올리고 싶지 않은 것들도 전체를 add할 수 있게 해줌, 프로젝트마다 하나씩 만들어주는 것이 좋음                                             ![image-20220126164457523](til_22.01.25~26.assets/image-20220126164457523.png)
+
+
+  - \-    https://www.toptal.com/developers/gitignore에서 본인이 사용하는 언어에 맞춰 ignore해줘야되는걸 해줌
+
 
 ### git이 local에서 기본적으로 운영되는 방식
 
