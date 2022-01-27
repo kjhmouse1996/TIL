@@ -82,11 +82,19 @@ ctrl+d: 루프에 갇힌 경우 빠져나오기
 - git init: initiation으로 현재 디렉토리를 깃이 관리하는 폴더로 만들기, 최초 처음 한번만 사용해야함, 현재 디렉토리 안에 있는 폴더를 모두 관리하기 때문에 홈 폴더에서 기입하면 안됨
   - git init을 완료하면 (master)가 떠야됨                                                                                                      ![캡처](test.assets/캡처-16431750103251.PNG)
 
-- git add a.txt: a.txt파일을 staging area로 옮기기
+- git add 파일이름: a.txt파일을 staging area로 옮기기
 
   - git add .: 현재위치에서 변경사항 있는 모든 파일들을 staging area로 옮기기
 
+- git rm --cached 파일이름:  새로운 파일을 add한 것을 다시 내리고 싶을 때 사용
+
+  ![image-20220127155805939](til_22.01.25~26.assets/image-20220127155805939.png) 
+
+- git restore --staged 파일이름: 수정(modified)한 것을 add했을 경우 다시 내리고 싶을 때 사용
+
 - git commit -m "메세지": staging area에 있는 파일의 변경 사항을 하나의 버전으로 저장(local repository로 옮겨짐
+
+- git commit --amend: 커밋 메세지를 잘못 기입한 경우 사용, 빔 에디터가 생김(목차에 빔 에디터가 생길 경우로 가서 보기)
 
 - git config --global --list로 깃허브 아이디랑 이메일이 지정되어있는지 확인 가능                 ![image-20220126135633646](test.assets/image-20220126135633646.png)         
   - 없을 경우
@@ -126,8 +134,9 @@ ctrl+d: 루프에 갇힌 경우 빠져나오기
   commit 뒤에 있는 숫자와 알파벳들의 조합은 해쉬값으로 고유 번호같은 개념
 
 
-  - git log --oneline: --oneline은 옵션 중 하나로 해쉬값과 함께 git log를 한줄로 간략하게 정리해줌![image-20220126140013811](test.assets/image-20220126140013811.png)
-  - git log –oneline --graph
+- git log --oneline: --oneline은 옵션 중 하나로 해쉬값과 함께 git log를 한줄로 간략하게 정리해줌![image-20220126140013811](test.assets/image-20220126140013811.png)
+
+- git log –oneline --graph
 
 - git checkout 해쉬값: 해쉬값 전까지의 작업으로 돌아가줌                                     <img src="test.assets/캡4.PNG" alt="캡4" style="zoom:67%;" />
 
@@ -135,16 +144,24 @@ ctrl+d: 루프에 갇힌 경우 빠져나오기
 
 - git checkout master: 지운 것을 되돌려줌(복구)                        ![캡처6](test.assets/캡처6.PNG)
 
+- git diff 해쉬값 해쉬값등: 파일의 어떤 내용이 변경(수정)되었는지 비교해줌
+
+  ![image-20220127160058691](til_22.01.25~26.assets/image-20220127160058691.png) 
+
 - git remote add origin github주소: 브릿지 잇기로 본인이 만든 파일을 올리려는 github페이지에 연결시키는 것
+
   - git remote -v: 브릿지가 제대로 이어졌는지 확인해줌, 원격 저장소 조회                                                            ![캡처](test.assets/캡처-16431752751992.PNG)
   - git remote remove origin: 깃허브주소를 잘못 기입했을 경우 연결 삭제
 
 - git push origin master: github페이지에 올리기                                                                                            ![9](test.assets/9-16431756660863.PNG)
 
+- git pull origin master: 깃허브페이지에 있는 변경사항을 그대로 로컬 저장소로 가져와서 업데이트
+
 - touch .gitignore: .gitignore를 만들어서 깃허브에 올리기 싫은 특정 파일이나 폴더를 안에 넣을 수 있음, git add .를 했을 때 올리고 싶지 않은 것들도 전체를 add할 수 있게 해줌, 프로젝트마다 하나씩 만들어주는 것이 좋음                                             ![image-20220126164457523](til_22.01.25~26.assets/image-20220126164457523.png)
 
 
-  - \-    https://www.toptal.com/developers/gitignore에서 본인이 사용하는 언어에 맞춰 ignore해줘야되는걸 해줌
+    - https://www.toptal.com/developers/gitignore에서 본인이 사용하는 언어에 맞춰 ignore해줘야되는걸 해줌
+
 
 
 ### git이 local에서 기본적으로 운영되는 방식
@@ -161,6 +178,62 @@ ctrl+d: 루프에 갇힌 경우 빠져나오기
   
   git log --oneline을 치면 5개의 추가 사항이 쌓인 것을 볼 수 있음
 
+### 빔 에디터가 생길 경우
+
+![image-20220127155201580](til_22.01.25~26.assets/image-20220127155201580.png) 
+
+1. 키보드에서 i를 침
+2.  끼워넣기가 보이면 뒤에 이어서 적어야될 내용 적음(노란색글씨)
+3.  esc누르고 :wq를 써주면됨
+   - wq: write and quit
+
+### 혼자 Clone 만들어서 사용해보기
+
+1. 깃허브에서 repository(원격저장소)를 만들 때 옵션들을 추가해서 만들고 그 주소를 복사해 옴
+
+3. 디렉토리 안에 폴더를 만듦 ex) TIL-home
+
+4. 폴더 하나(TIL-home)에서 vscode를 열고 
+
+   ``` bash
+   $ git init
+   $ touch day1.md
+   $ git add .
+   $ git commit -m "집에서 day1작성"
+   $ git remote add origin 원격저장소주소
+   $ git push origin master
+   ```
+
+<img src="https://hphk.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2b2cb06c-f92a-4688-928c-a0253074c18c%2FUntitled.png?table=block&id=044ef6d9-df0e-48ea-8dbc-78d0507d2c9c&spaceId=daa2d103-3ecd-4519-8c30-4f55e74c7ef4&width=1830&userId=&cache=v2" alt="img" style="zoom: 67%;" />
+
+4. clone을 만들어줌
+
+   - git clone 클론주소: 클론 주소를 가져와서 클론 폴더(TIL-class)를 만들어주기![image-20220126173344988](til_22.01.25~26.assets/image-20220126173344988.png)
+   - 클론을 만들면 바로 init이 저절로 되어 있는 것을 볼 수 있음
+   - 옵션으로 README.md추가를  했던 것이 폴더 안에 있는 것을 볼 수 있음
+   - 깃허브 주소도 알아서 들어가있는 것을 볼 수 있음
+
+   <img src="https://hphk.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F132461a5-d490-4417-b8e4-11d82d1a0252%2FUntitled.png?table=block&id=7cfee8ce-e8f2-4e42-965e-3cffc8410446&spaceId=daa2d103-3ecd-4519-8c30-4f55e74c7ef4&width=1830&userId=&cache=v2" alt="img" style="zoom:67%;" />
+
+   ![캡처2](til_22.01.25~26.assets/캡처2.PNG)
+
+5. 클론을 만든 폴더(TIL-class)에서 vscode를 열고 새로운 파일을 만들어서 원격저장소에 올려놓기
+
+   ```bash
+   $ touch day2.md
+   $ git add .
+   $ git commit -m "강의장에서 Day2 작성"
+   $ git push origin master
+   ```
+
+   <img src="https://hphk.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F13e9eb36-2521-41d1-9b7a-181204c8983b%2FUntitled.png?table=block&id=cca2f329-b5ac-4e49-b3fb-6022bbf49655&spaceId=daa2d103-3ecd-4519-8c30-4f55e74c7ef4&width=1600&userId=&cache=v2" alt="img" style="zoom:67%;" />
+
+6. TIL-home의 vscode에서 git pull origin master를 사용해서 TIL-class폴더에서 새로 만든 파일을 가져옴
+
+   <img src="https://hphk.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0ec0a1de-5218-428b-b6e7-24d9221eb1fd%2FUntitled.png?table=block&id=116dd8eb-2d30-4c8b-86b5-205ff20d51f9&spaceId=daa2d103-3ecd-4519-8c30-4f55e74c7ef4&width=1600&userId=&cache=v2" alt="img" style="zoom:67%;" />
+   
+   ![캡처3](til_22.01.25~26.assets/캡처3.PNG)
+
 ---
 
 ## 마크다운 명령어
@@ -175,9 +248,9 @@ ctr+/: 오른쪽 개요 열고 닫기 및 원문을 볼 수 있음
 
 *,- : 글머리 기호할 때 사용 **∙**이렇게 나옴, 그 이후는 tab으로 하위 항목 생성 가능
 
-\` `: 안에다가 글을 쓰면 인라인 블록으로 처리됨, 소따음표랑 헷갈리지 말것, 주피터노트북 #랑같은거 같기도 하고
+\` `: 안에다가 글을 쓰면 인라인 블록으로 처리됨, 소따음표랑 헷갈리지 말것
 
-\```: 3개를 치면 코드를 쓸 수 있음
+\```: 3개를 치코 사용할 언어이름을 치면 코드를 쓸 수 있음 ex) \```python
 
 ![보여질제목](실제링크): 링크가 있는 사진 가져오기, 사진을 ctrl+c ctrl+v로 가져올수있음
 
